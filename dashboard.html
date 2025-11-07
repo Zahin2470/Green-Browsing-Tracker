@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <title>Green Browsing Dashboard</title>
+
+    <!-- ✅ Load only ONE Chart.js source (CDN version is fine) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <style>
+      .chart-card {
+        position: relative;
+      }
+      .chart-container {
+        width: 100%;
+        height: 240px;
+        max-height: 240px;
+        overflow: hidden;
+        position: relative;
+        box-sizing: border-box;
+      }
+      .chart-container canvas {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <div class="header-content">
+          <h1>🌳🎄 Green Browsing Dashboard 🎄🌳</h1>
+          <div class="controls">
+            <button id="exportCsv" class="btn primary">🍂 Export CSV 🍂</button>
+            <button id="clearData" class="btn secondary">🍀 Clear Data 🍀</button>
+            <button id="openOptions" class="btn tertiary"> 🍁 Options 🍁</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="main-content-grid">
+        <!-- 🌲 Summary -->
+        <section id="summarySection" class="card summary-card">
+          <h2>🌳 My Impact 🌲</h2>
+          <div id="totals" class="totals-grid">
+            <div class="total-item co2-saved">
+              <span class="value" data-label="CO2 Saved">0.000 g</span>
+              <span class="label">🌺 CO₂ Footprint Reduced 🌺</span>
+            </div>
+            <div class="total-item visits-count">
+              <span class="value" data-label="Total Visits">0</span>
+              <span class="label">🌴 Total Pages Visited 🌴 </span>
+            </div>
+            <div class="total-item data-transferred">
+              <span class="value" data-label="Data Transferred">0.0 KB</span>
+              <span class="label">🌻 Total Data Transferred 🌻</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 🌲 Fixed-size Chart section -->
+        <section class="card chart-card">
+          <h2>🌳 Footprint Trend 🌲</h2>
+          <div class="chart-container">
+            <canvas id="visitsChart"></canvas>
+          </div>
+        </section>
+
+        <!-- 🌲 Top Sites -->
+        <section class="card top-sites-card">
+          <h2>🌳 Top Sites Footprint 🌲</h2>
+          <ul id="topSites" class="top-sites-list">
+            <li class="placeholder">Browse to see data here.</li>
+          </ul>
+        </section>
+
+        <!-- 🌲 Recent Visits -->
+        <section class="card recent-visits-card full-width">
+          <h2>🌳 Recent Visits 🌲</h2>
+          <div class="table-container">
+            <table id="visitsTable">
+              <thead>
+                <tr>
+                  <th>🪴 Time 🪴</th>
+                  <th>🪴 Origin 🪴</th>
+                  <th>🪴 Bytes 🪴</th>
+                  <th>🪴 CO2 (g) 🪴</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="4" class="no-data">No recent visits recorded.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+    <!-- ✅ Only your main dashboard JS -->
+    <script src="chart.umd.min.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
